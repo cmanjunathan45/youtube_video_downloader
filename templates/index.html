@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Video Downloader - Premium Quality</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <!-- Theme Toggle -->
+        <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
+            <span class="theme-icon">🌙</span>
+        </button>
+        
+        <header>
+            <h1>YouTube Video Downloader</h1>
+            <p class="subtitle">Download videos and playlists in premium quality</p>
+        </header>
+
+        <main>
+            <div class="input-section">
+                <div class="input-group">
+                    <input 
+                        type="text" 
+                        id="urlInput" 
+                        placeholder="Paste YouTube video or playlist URL here..."
+                        aria-label="YouTube URL input"
+                    >
+                    <button id="submitBtn" class="btn btn-primary">
+                        <span class="btn-text">Extract</span>
+                        <span class="spinner hidden"></span>
+                    </button>
+                </div>
+                <p class="helper-text">Supports: Single videos, playlists, and shorts</p>
+            </div>
+
+            <div id="errorMessage" class="error-message hidden"></div>
+            <div id="successMessage" class="success-message hidden"></div>
+
+            <div id="loadingIndicator" class="loading-indicator hidden">
+                <div class="loader"></div>
+                <p>Extracting video information...</p>
+            </div>
+
+            <div id="resultsContainer" class="results-container hidden">
+                <!-- Results will be dynamically inserted here -->
+            </div>
+
+            <!-- Download Progress Modal -->
+            <div id="progressModal" class="progress-modal hidden">
+                <div class="progress-content">
+                    <h3>Downloading...</h3>
+                    <div class="progress-bar-container">
+                        <div id="progressBar" class="progress-bar"></div>
+                    </div>
+                    <p id="progressText">Preparing download...</p>
+                    <button id="cancelDownloadBtn" class="btn btn-cancel hidden">Cancel Download</button>
+                </div>
+            </div>
+
+            <!-- Confirmation Dialog -->
+            <div id="confirmDialog" class="confirm-dialog hidden">
+                <div class="confirm-content">
+                    <h3>Confirm Download</h3>
+                    <p id="confirmMessage">Are you sure you want to download this video?</p>
+                    <div class="confirm-actions">
+                        <button id="confirmYes" class="btn btn-primary">Yes, Download</button>
+                        <button id="confirmNo" class="btn btn-secondary">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>Built for educational purposes. Respect copyright laws and YouTube's Terms of Service.</p>
+        </footer>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast hidden"></div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
