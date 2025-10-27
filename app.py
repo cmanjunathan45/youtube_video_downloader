@@ -79,11 +79,32 @@ def validate_youtube_url(url):
 
 def extract_video_info(url):
     """Extract video information using yt-dlp"""
+    # Base options for metadata extraction
     ydl_opts = {
         'quiet': True,
         'no_warnings': True,
         'skip_download': True,
     }
+
+    # Optional cookies support (handles some login / anti-bot barriers)
+    # Priority: explicit env var path (YTDLP_COOKIES_FILE) > local cookies.txt
+    cookies_file = os.getenv('YTDLP_COOKIES_FILE') or 'cookies.txt'
+    if os.path.exists(cookies_file):
+        ydl_opts['cookiefile'] = cookies_file
+        print(f"🔐 Using cookies file for extraction: {cookies_file}")
+    else:
+        # Allow passing raw cookies string via env (YTDLP_COOKIES) if provided
+        raw_cookies = os.getenv('YTDLP_COOKIES')
+        if raw_cookies:
+            # Write ephemeral cookies file
+            tmp_cookie_path = os.path.join(DOWNLOAD_FOLDER, '_inline_cookies.txt')
+            try:
+                with open(tmp_cookie_path, 'w', encoding='utf-8') as cf:
+                    cf.write(raw_cookies.strip() + '\n')
+                ydl_opts['cookiefile'] = tmp_cookie_path
+                print("🔐 Using inline cookies from environment variable")
+            except Exception as ce:
+                print(f"⚠️ Failed writing inline cookies: {ce}")
     
     try:
         with yt_dlp.YoutubeDL(ydl_opts) as ydl:
@@ -253,6 +274,24 @@ def extract():
         
     except Exception as e:
         error_message = str(e)
+        lowered = error_message.lower()
+        # Authentication / anti-bot / human verification messages
+        auth_phrases = [
+            'sign in to confirm', 'not a bot', 'verify you', 'captcha',
+            'consent required', 'please sign in', 'account issue'
+        ]
+        if any(p in lowered for p in auth_phrases):
+            return jsonify({
+                'error': 'Authentication or human verification required for this video.',
+                'code': 'auth_required',
+                'video_id': request.get_json().get('url', ''),
+                'suggestions': [
+                    'Open the video in a browser account and verify accessibility.',
+                    'Provide a cookies.txt file exported from your logged-in browser (set YTDLP_COOKIES_FILE).',
+                    'Or run: yt-dlp --cookies-from-browser chrome <VIDEO_URL> --write-cookies cookies.txt',
+                    'Retry after some time – temporary verification barriers may clear.'
+                ]
+            }), 403
         if 'Private video' in error_message or 'unavailable' in error_message:
             return jsonify({'error': 'Video is private or unavailable'}), 404
         elif 'age' in error_message.lower():
