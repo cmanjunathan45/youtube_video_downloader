@@ -1,188 +1,53 @@
-# 🎥 YouTube Video Downloader# YouTube Video Downloader# 🎥 YouTube Video Downloader
-
-
+# 🎥 YouTube Video Downloader
 
 A modern, feature-rich YouTube video downloader with a premium dark-themed UI. Download videos and playlists in multiple quality options with real-time progress tracking and mobile app switching support.
 
-
-
-![Version](https://img.shields.io/badge/version-2.0.0-blue.svg)A modern, feature-rich YouTube video downloader with a premium dark-themed UI. Download videos and playlists in multiple quality options with real-time progress tracking and mobile app switching support.A modern, feature-rich web application for downloading YouTube videos and playlists with multiple quality options. Built with Flask, yt-dlp, and vanilla JavaScript.
-
+![Version](https://img.shields.io/badge/version-2.0.0-blue.svg)
 ![Python](https://img.shields.io/badge/python-3.8+-green.svg)
-
 ![Flask](https://img.shields.io/badge/flask-3.0.0-red.svg)
 
+## ✨ Features
 
-
-## ✨ Features![Version](https://img.shields.io/badge/version-2.0.0-blue.svg)## ✨ Features
-
-
-
-### Core Functionality![Python](https://img.shields.io/badge/python-3.8+-green.svg)
-
+### Core Functionality
 - 🎥 **Single Video & Playlist Downloads** - Download individual videos or entire playlists
-
-- 📊 **Multiple Quality Options** - Choose from 360p, 720p, 1080p, 4K, or audio-only![Flask](https://img.shields.io/badge/flask-3.0.0-red.svg)- **Single Video & Playlist Support**: Download individual videos or entire playlists
-
+- 📊 **Multiple Quality Options** - Choose from 360p, 720p, 1080p, 4K, or audio-only
 - 🎵 **Audio Extraction** - Download audio-only versions in high quality
-
-- 📝 **Subtitle Support** - Automatic subtitle download when available- **Multiple Quality Options**: Choose from 720p, 1080p, 4K, and audio-only formats
-
+- 📝 **Subtitle Support** - Automatic subtitle download when available
 - 📦 **Batch Downloads** - Download entire playlists with one click
 
-## ✨ Features- **Beautiful UI**: Modern, responsive design that works on desktop, tablet, and mobile
-
 ### User Experience
-
-- 🎨 **Premium Dark Theme** - Modern, eye-friendly interface with light/dark toggle- **Real-time Progress**: Loading indicators and status messages
-
+- 🎨 **Premium Dark Theme** - Modern, eye-friendly interface with light/dark toggle
 - 📱 **Mobile Optimized** - Fully responsive design for all devices
-
-- ⚡ **Real-time Progress** - Live download progress with speed and percentage### Core Functionality- **Error Handling**: Comprehensive error messages with helpful suggestions
-
+- ⚡ **Real-time Progress** - Live download progress with speed and percentage
 - 🔄 **Session Persistence** - Resume your session after browser refresh
-
-- 📲 **App Switching Support** - Downloads continue even when switching mobile apps- 🎥 **Single Video & Playlist Downloads** - Download individual videos or entire playlists- **Fast Processing**: Async processing for playlists to minimize wait times
-
+- 📲 **App Switching Support** - Downloads continue even when switching mobile apps
 - ⚠️ **Download Confirmation** - Confirmation dialog before starting downloads
+- ❌ **Cancel Anytime** - Stop downloads mid-process with proper cleanup
 
-- ❌ **Cancel Anytime** - Stop downloads mid-process with proper cleanup- 📊 **Multiple Quality Options** - Choose from 360p, 720p, 1080p, 4K, or audio-only
-
-
-
-### Technical Features- 🎵 **Audio Extraction** - Download audio-only versions in high quality## 🚀 Quick Start
-
+### Technical Features
 - 🚀 **Streaming Downloads** - Efficient memory usage with stream processing
-
-- 🔒 **Concurrent Downloads** - Support multiple users downloading simultaneously- 📝 **Subtitle Support** - Automatic subtitle download when available
-
+- 🔒 **Concurrent Downloads** - Support multiple users downloading simultaneously
 - 🧹 **Auto Cleanup** - Automatic server file cleanup after downloads
-
-- 🎯 **Smart Format Selection** - Automatically selects highest bitrate for quality- 📦 **Batch Downloads** - Download entire playlists with one click### Prerequisites
-
+- 🎯 **Smart Format Selection** - Automatically selects highest bitrate for quality
 - 🔁 **Retry Logic** - Handles file locking and network interruptions
-
 - 🌐 **CORS Enabled** - Works from any origin
 
+## 🚀 Quick Start
 
-
-## 🚀 Quick Start### User Experience- Python 3.8 or higher
-
-
-
-### Prerequisites- 🎨 **Premium Dark Theme** - Modern, eye-friendly interface with light/dark toggle- pip (Python package installer)
-
+### Prerequisites
 - Python 3.8 or higher
-
-- Internet connection- 📱 **Mobile Optimized** - Fully responsive design for all devices- **FFmpeg** (Required for high-quality downloads - see [FFMPEG_INSTALL.md](FFMPEG_INSTALL.md))
-
+- Internet connection
 - FFmpeg (optional, for best quality video merging)
-
-- ⚡ **Real-time Progress** - Live download progress with speed and percentage
 
 ### Installation
 
-- 🔄 **Session Persistence** - Resume your session after browser refresh### Installation
-
 1. **Clone the repository**
-
-```bash- 📲 **App Switching Support** - Downloads continue even when switching mobile apps
-
+```bash
 git clone https://github.com/yourusername/youtube-downloader.git
-
-cd youtube-downloader- ⚠️ **Download Confirmation** - Confirmation dialog before starting downloads1. **Clone or download this repository**
-
+cd youtube-downloader
 ```
 
-- ❌ **Cancel Anytime** - Stop downloads mid-process with proper cleanup
-
 2. **Run the application**
-
-```bash2. **Install dependencies:**
-
-python app.py
-
-```### Technical Features   ```bash
-
-*The app will automatically install missing dependencies on first run*
-
-- 🚀 **Streaming Downloads** - Efficient memory usage with stream processing   pip install -r requirements.txt
-
-3. **Open in browser**
-
-```- 🔒 **Concurrent Downloads** - Support multiple users downloading simultaneously   ```
-
-http://localhost:5000
-
-```- 🧹 **Auto Cleanup** - Automatic server file cleanup after downloads
-
-
-
-### Manual Dependency Installation- 🎯 **Smart Format Selection** - Automatically selects highest bitrate for quality3. **Install FFmpeg (Important!):**
-
-If auto-install fails, install manually:
-
-```bash- 🔁 **Retry Logic** - Handles file locking and network interruptions   - Windows: `choco install ffmpeg` or see [FFMPEG_INSTALL.md](FFMPEG_INSTALL.md)
-
-pip install -r requirements.txt
-
-```- 🌐 **CORS Enabled** - Works from any origin   - Without FFmpeg, only pre-merged formats will work (lower quality)
-
-
-
-## 📖 How to Use
-
-
-
-### Download a Single Video## 🚀 Quick Start4. **Run the application:**
-
-
-
-1. **Paste YouTube URL** in the input field   ```bash
-
-   - Example: `https://www.youtube.com/watch?v=VIDEO_ID`
-
-### Prerequisites   python app.py
-
-2. **Click "Extract Video Info"**
-
-   - Application fetches video details and available formats- Python 3.8 or higher   ```
-
-
-
-3. **Select Quality**- Internet connection
-
-   - Choose from available options (360p, 720p, 1080p, 4K, Audio)
-
-   - Higher quality requires more time and bandwidth- FFmpeg (optional, for best quality video merging)4. **Open your browser and navigate to:**
-
-
-
-4. **Confirm Download**   ```
-
-   - Click confirmation dialog
-
-   - Download begins with real-time progress### Installation   http://127.0.0.1:5000
-
-
-
-5. **Wait for Completion**   ```
-
-   - Progress bar shows download status
-
-   - File automatically saves to your device1. **Clone the repository**
-
-
-
-### Download a Playlist```bash## 📖 Usage
-
-
-
-1. **Paste Playlist URL**git clone https://github.com/yourusername/youtube-downloader.git
-
-   - Example: `https://www.youtube.com/playlist?list=PLAYLIST_ID`
-
-cd youtube-downloader1. **Enter a YouTube URL:**
 
 2. **Extract Playlist**
 
