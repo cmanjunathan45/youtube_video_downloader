@@ -90,8 +90,7 @@ y2_vid/
 │   ├── style.css               # Responsive styles & theme variables
 │   └── script.js               # Frontend logic & API orchestration
 ├── downloads/                  # Temporary storage (auto-cleaned)
-└── .github/
-    └── copilot-instructions.md # AI development & maintenance guide
+
 ```
 
 ---
@@ -328,3 +327,4 @@ Educational / personal use only. You are responsible for compliance with all app
 October 27, 2025
 
 **Made with ❤️ for learners, builders, and ethical use.**
+
